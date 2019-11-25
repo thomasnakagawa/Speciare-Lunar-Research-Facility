@@ -15,10 +15,15 @@ public class PointAndClickMovement : MonoBehaviour
     private CameraManager camManager;
 
     private Interactive pendingInteractive;
+    private string pendingItem;
+
+    public string HeldInventoryItem;
 
     private DialogBox dialogBox;
 
     private int IgnorePlayerLayerMask;
+
+    private EventSystem eventSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +36,28 @@ public class PointAndClickMovement : MonoBehaviour
         dialogBox = SceneUtils.FindComponentInScene<DialogBox>();
         IgnorePlayerLayerMask = LayerMask.GetMask("Player");
 
+        eventSystem = EventSystem.current;
+    }
+
+    public void MoveTo(Vector3 position)
+    {
+        pendingItem = null;
+        pendingInteractive = null;
+        navMeshAgent.destination = position;
+    }
+
+    public void InteractWith(Interactive interactive)
+    {
+        pendingItem = null;
+        pendingInteractive = interactive;
+        navMeshAgent.destination = pendingInteractive.InteractPoint.position;
+    }
+
+    public void UseItemOn(string item, Interactive interactive)
+    {
+        pendingItem = item;
+        pendingInteractive = interactive;
+        navMeshAgent.destination = pendingInteractive.InteractPoint.position;
     }
 
     // Update is called once per frame
@@ -41,8 +68,9 @@ public class PointAndClickMovement : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
+        /*
         // mouse click
-        if (dialogBox.IsShowingDialog == false)
+        if (dialogBox.IsShowingDialog == false && eventSystem.IsPointerOverGameObject() == false)
         {
             if (Physics.Raycast(camManager.currentCam.ScreenPointToRay(Input.mousePosition), out var hit, IgnorePlayerLayerMask))
             {
@@ -72,6 +100,26 @@ public class PointAndClickMovement : MonoBehaviour
                 }
             }
         }
+        */
+
+        /*
+        if (HeldInventoryItem != null)
+        {
+            if (Physics.Raycast(camManager.currentCam.ScreenPointToRay(Input.mousePosition), out var hit, IgnorePlayerLayerMask))
+            {
+                Interactive interactive = hit.collider.GetComponent<Interactive>();
+
+                if (interactive != null)
+                {
+                    FindObjectOfType<Cursor>().SetText("Use " + HeldInventoryItem + " with " + interactive.ObjectName, "");
+                }
+                else
+                {
+                    FindObjectOfType<Cursor>().SetText("Use " + HeldInventoryItem + " with...", "");
+                }
+            }
+        }
+        */
 
         // interaction
         if (pendingInteractive != null)
@@ -82,8 +130,17 @@ public class PointAndClickMovement : MonoBehaviour
             {
                 Debug.Log("GOT TO " + pendingInteractive.ObjectName);
                 navMeshAgent.destination = transform.position;
-                pendingInteractive.Interact();
-                pendingInteractive = null;
+                if (pendingItem == null)
+                {
+                    pendingInteractive.Interact();
+                    pendingInteractive = null;
+                }
+                else
+                {
+                    pendingInteractive.UseItemOn(pendingItem);
+                    pendingInteractive = null;
+                    pendingItem = null;
+                }
             }
         }
 
@@ -96,7 +153,6 @@ public class PointAndClickMovement : MonoBehaviour
         else
         {
             animator.SetInteger("AnimationPar", 0);
-
         }
     }
 }

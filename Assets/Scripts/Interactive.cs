@@ -31,4 +31,9 @@ public class Interactive : MonoBehaviour
             FindObjectOfType<DialogBox>().ShowDialog(InspectLines);
         }
     }
+
+    public virtual void UseItemOn(string item)
+    {
+        Debug.Log("Used " + item + " on " + ObjectName);
+    }
 }
