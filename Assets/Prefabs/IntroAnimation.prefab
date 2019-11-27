@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 777974058711278466}
   - component: {fileID: 5173628496967841842}
   - component: {fileID: 3197307120626275224}
-  - component: {fileID: 9112139667583418347}
   - component: {fileID: 786610157867075155}
   - component: {fileID: 349106257640476765}
   m_Layer: 0
@@ -83,23 +82,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &9112139667583418347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5434499155240147661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!222 &786610157867075155
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2971,3 +2953,8 @@ MonoBehaviour:
     Speaker: '{player}'
     Sound: {fileID: 0}
     SpecialLine: 0
+  OnCorrectUse:
+    m_PersistentCalls:
+      m_Calls: []
+  CorrectItemName: 
+  CorrectUseLines: []
