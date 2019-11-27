@@ -43,6 +43,14 @@ public class Cursor : MonoBehaviour
         isShowing = true;
     }
 
+    public void SetTextUseWith(string item, string objectName)
+    {
+        descriptor.gameObject.SetActive(true);
+        objectText.text = "Use " + item + " with " + objectName;
+        actionText.text = "";
+        isShowing = true;
+    }
+
     public void HideText()
     {
         descriptor.gameObject.SetActive(false);

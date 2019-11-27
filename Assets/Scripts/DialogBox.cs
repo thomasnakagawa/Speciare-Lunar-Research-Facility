@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using OatsUtil;
+using UnityEngine.UI;
 
 public class DialogBox : MonoBehaviour
 {
@@ -13,16 +14,22 @@ public class DialogBox : MonoBehaviour
 
     private Canvas DialogBoxCanvas;
     private TMPro.TMP_Text DialogBoxText;
+    private Button NextButton;
+    private TMPro.TMP_InputField InputField;
 
     private Cursor cursor;
 
     private AudioSource AudioSource;
+
+    public System.Action OnDialogEnded;
 
     void Start()
     {
         PlayerName = PlayerPrefs.GetString("PlayerName", "Player");
         LinesToShow = new Queue<DialogLine>();
 
+        InputField = this.RequireDescendantGameObject("NameInputField").RequireComponent<TMPro.TMP_InputField>();
+        NextButton = this.RequireDescendantGameObject("NextButton").RequireComponent<Button>();
         DialogBoxText = this.RequireDescendantGameObject("DialogText").RequireComponent<TMPro.TMP_Text>();
         DialogBoxCanvas = this.RequireComponent<Canvas>();
 
@@ -58,6 +65,12 @@ public class DialogBox : MonoBehaviour
         {
             // no next line, so hide box
             DialogBoxCanvas.enabled = false;
+
+            if (OnDialogEnded != null)
+            {
+                OnDialogEnded.Invoke();
+                OnDialogEnded = null;
+            }
         }
         else
         {
@@ -85,7 +98,33 @@ public class DialogBox : MonoBehaviour
             {
                 AudioSource.PlayOneShot(nextLine.Sound);
             }
+
+            // special lines
+            if(nextLine.SpecialLine == DialogLine.SpecialLines.NONE)
+            {
+                InputField.gameObject.SetActive(false);
+            }
+            if (nextLine.SpecialLine == DialogLine.SpecialLines.NAME_BOX)
+            {
+                InputField.gameObject.SetActive(true);
+                NextButton.interactable = false;
+                InputField.onValueChanged.AddListener(inputText =>
+                {
+                    if (validateName(inputText))
+                    {
+                        PlayerPrefs.SetString("PlayerName", inputText);
+                    }
+                    NextButton.interactable = validateName(inputText);
+                });
+            }
         }
+    }
+
+    private bool validateName(string inputName)
+    {
+        return inputName.Contains(" ") == false &&
+            inputName.Length > 0 &&
+            inputName.Length < 20;
     }
 
     private IEnumerator TypeWrite(string content)

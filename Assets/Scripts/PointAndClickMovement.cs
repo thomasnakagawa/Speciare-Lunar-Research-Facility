@@ -63,64 +63,6 @@ public class PointAndClickMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(0);
-        }
-
-        /*
-        // mouse click
-        if (dialogBox.IsShowingDialog == false && eventSystem.IsPointerOverGameObject() == false)
-        {
-            if (Physics.Raycast(camManager.currentCam.ScreenPointToRay(Input.mousePosition), out var hit, IgnorePlayerLayerMask))
-            {
-                Interactive interactive = hit.collider.GetComponent<Interactive>();
-
-                if (interactive != null)
-                {
-                    FindObjectOfType<Cursor>().SetText(interactive.ObjectName, interactive.Verb);
-                }
-                else
-                {
-                    FindObjectOfType<Cursor>().HideText();
-                }
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (interactive != null)
-                    {
-                        Debug.Log("GOING TO " + interactive.ObjectName);
-                        pendingInteractive = interactive;
-                        navMeshAgent.destination = pendingInteractive.InteractPoint.position;
-                    }
-                    else
-                    {
-                        pendingInteractive = null;
-                        navMeshAgent.destination = hit.point;
-                    }
-                }
-            }
-        }
-        */
-
-        /*
-        if (HeldInventoryItem != null)
-        {
-            if (Physics.Raycast(camManager.currentCam.ScreenPointToRay(Input.mousePosition), out var hit, IgnorePlayerLayerMask))
-            {
-                Interactive interactive = hit.collider.GetComponent<Interactive>();
-
-                if (interactive != null)
-                {
-                    FindObjectOfType<Cursor>().SetText("Use " + HeldInventoryItem + " with " + interactive.ObjectName, "");
-                }
-                else
-                {
-                    FindObjectOfType<Cursor>().SetText("Use " + HeldInventoryItem + " with...", "");
-                }
-            }
-        }
-        */
-
         // interaction
         if (pendingInteractive != null)
         {

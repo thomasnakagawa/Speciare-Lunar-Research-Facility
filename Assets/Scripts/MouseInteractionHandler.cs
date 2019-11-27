@@ -14,7 +14,7 @@ public class MouseInteractionHandler : MonoBehaviour
     private CameraManager cameraManager;
     private Cursor cursor;
 
-    public string heldItem;
+    private string heldItem = null;
 
     // Use this for initialization
     void Start()
@@ -65,17 +65,31 @@ public class MouseInteractionHandler : MonoBehaviour
                 else if (heldItem != null && hoveredInteractive != null)
                 {
                     Player.UseItemOn(heldItem, hoveredInteractive);
+                    heldItem = null;
                 }
             }
 
-            // set cursor
-            if (hoveredInteractive == null)
+            if (Input.GetMouseButtonDown(1))
             {
-                cursor.HideText();
+                heldItem = null;
+            }
+
+            // set cursor
+            if (heldItem != null && hoveredInteractive != null)
+            {
+                cursor.SetTextUseWith(heldItem, hoveredInteractive.ObjectName);
+            }
+            else if (heldItem == null && hoveredInteractive != null)
+            {
+                cursor.SetText(hoveredInteractive.ObjectName, hoveredInteractive.Verb);
+            }
+            else if (heldItem != null && hoveredInteractive == null)
+            {
+                cursor.SetTextUseWith(heldItem, "...");
             }
             else
             {
-                cursor.SetText(hoveredInteractive.ObjectName, hoveredInteractive.Verb);
+                cursor.HideText();
             }
         }
         else
