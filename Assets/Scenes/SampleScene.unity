@@ -120,6 +120,40 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: ec92b7542a33b4b1f8ee32d8acb6f67a, type: 2}
+--- !u!1 &155926609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8078437609641661390, guid: f247ce8050dcdfe4ab9297ec3566acef,
+    type: 3}
+  m_PrefabInstance: {fileID: 5656897239065747593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &155926613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155926609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &433914507
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +197,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &545584302 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5111328563746580158, guid: f33e683dff33936429901656799d18c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5111328563251940053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25570a90397443ddb97469f9521e03c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &620296734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8480885344173209663, guid: f550c9b567cfe4e5198306221840be9e,
@@ -197,7 +243,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6588288231323080224, guid: 72b9e2a1228674aef88279948cff99cb,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4dc395fe60e833d4eb369943fb4e71b3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 352d8fec46fb4ad478cc554ed58b2977, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -500,7 +546,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh79870
+  m_Name: pb_Mesh-141080
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1006,6 +1052,126 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: OnCorrectUse.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: OnCorrectUse.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: OnCorrectUse.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: OnCorrectUse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 545584302}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: OnCorrectUse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: OnCorrectUse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectItemName
+      value: employee keycard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.data[0].Sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 52006dc7473d1374f8789f1a10def552, type: 3}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.data[0].Content
+      value: WELCOME, RAMONA ANDREA
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.data[1].Content
+      value: I hope she's ok with me using her card
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.data[1].Sound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.data[1].Speaker
+      value: '{player}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.data[0].Speaker
+      value: Keycard reader
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[1].Content
+      value: They gave me an old keycard from a past employee
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[2].Content
+      value: It's in my inventory. I should try using it with this keycard reader
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[2].Speaker
+      value: '{player}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333507019834216950, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.37060314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333507019834216950, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92879134
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333507019834216950, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4764986
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333507019834216950, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.81018
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333507019834216950, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 43.506
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339201973372598226, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_Name
+      value: frontcardreader
+      objectReference: {fileID: 0}
     - target: {fileID: 5111328562227363990, guid: f33e683dff33936429901656799d18c2,
         type: 3}
       propertyPath: m_Name
@@ -1076,6 +1242,57 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1372208665}
+    - target: {fileID: 5111328563573098032, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563573098032, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: ObjectName
+      value: Broken satellite
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563573098032, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[2].Content
+      value: I'll need a power cable and a metal pole to fix it
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563573098032, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[2].Speaker
+      value: '{player}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563573098032, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[0].Content
+      value: I can't believe I crash landed my ship and broke the lab's satellite
+        dish
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563573098032, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[1].Content
+      value: I need to fix the satellite so I can call for help
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563746580159, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563746580159, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[0].Content
+      value: The recipes for the cures should be inside
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563746580159, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[1].Content
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111328563746580159, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[2].Content
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33e683dff33936429901656799d18c2, type: 3}
 --- !u!1001 &5656897239065747593
@@ -1194,6 +1411,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656897238520374992, guid: f247ce8050dcdfe4ab9297ec3566acef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656897238520374995, guid: f247ce8050dcdfe4ab9297ec3566acef,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078437609641661393, guid: f247ce8050dcdfe4ab9297ec3566acef,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 109.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078437609864557375, guid: f247ce8050dcdfe4ab9297ec3566acef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078437609864557375, guid: f247ce8050dcdfe4ab9297ec3566acef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078437609864557374, guid: f247ce8050dcdfe4ab9297ec3566acef,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 514
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f247ce8050dcdfe4ab9297ec3566acef, type: 3}

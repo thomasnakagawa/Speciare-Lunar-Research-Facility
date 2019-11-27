@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
         CloseInventory();
 
         var newItem = new InventoryItem();
-        newItem.ItemName = "Keycard";
+        newItem.ItemName = "employee keycard";
         AddToInventory(newItem);
     }
 

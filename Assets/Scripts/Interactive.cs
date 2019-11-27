@@ -14,6 +14,11 @@ public class Interactive : MonoBehaviour
 
     [SerializeField] private DialogLine[] InspectLines = default;
 
+    [Header("Item use")]
+    [SerializeField] private UnityEvent OnCorrectUse = default;
+    [SerializeField] private string CorrectItemName = default;
+    [SerializeField] private DialogLine[] CorrectUseLines = default;
+
     public Transform InteractPoint => InteractPosition == null ? transform : InteractPosition;
 
     private Transform InteractPosition;
@@ -32,8 +37,18 @@ public class Interactive : MonoBehaviour
         }
     }
 
-    public virtual void UseItemOn(string item)
+    public virtual bool UseItemOn(string item)
     {
         Debug.Log("Used " + item + " on " + ObjectName);
+        if (item.ToLower().Equals(CorrectItemName.ToLower()))
+        {
+            OnCorrectUse.Invoke();
+            FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -79,7 +79,16 @@ public class PointAndClickMovement : MonoBehaviour
                 }
                 else
                 {
-                    pendingInteractive.UseItemOn(pendingItem);
+                    bool useResult = pendingInteractive.UseItemOn(pendingItem);
+                    if (useResult == false)
+                    {
+                        FindObjectOfType<DialogBox>().ShowDialog(new DialogLine[] {
+                            new DialogLine(
+                                "{player}",
+                                "Using the " + pendingItem + " with the " + pendingInteractive.ObjectName + " didn't work"
+                            )
+                        });
+                    }
                     pendingInteractive = null;
                     pendingItem = null;
                 }

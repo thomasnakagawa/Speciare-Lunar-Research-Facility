@@ -18,6 +18,7 @@ public class DialogBox : MonoBehaviour
     private TMPro.TMP_InputField InputField;
 
     private Cursor cursor;
+    private Inventory inventory;
 
     private AudioSource AudioSource;
 
@@ -35,7 +36,8 @@ public class DialogBox : MonoBehaviour
 
         DialogBoxCanvas.enabled = false;
 
-        cursor = SceneUtils.FindComponentInScene<Cursor>();
+        cursor = FindObjectOfType<Cursor>();
+        inventory = FindObjectOfType<Inventory>();
 
         AudioSource = this.RequireComponent<AudioSource>();
     }
@@ -44,7 +46,14 @@ public class DialogBox : MonoBehaviour
 
     public void ShowDialog(DialogLine[] lines)
     {
-        cursor.HideText();
+        if (cursor != null)
+        {
+            cursor.HideText();
+        }
+        if (inventory != null)
+        {
+            inventory.CloseInventory();
+        }
 
         foreach (DialogLine line in lines)
         {
