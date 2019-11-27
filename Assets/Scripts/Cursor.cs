@@ -19,18 +19,19 @@ public class Cursor : MonoBehaviour
         objectText = background.RequireChildGameObject("ObjectLabel").RequireComponent<TMPro.TMP_Text>();
         actionText = background.RequireChildGameObject("ActionLabel").RequireComponent<TMPro.TMP_Text>();
     }
+
     private void Update()
     {
         if (isShowing)
         {
             descriptor.position = Input.mousePosition;
-            if (Input.mousePosition.x > (Screen.width - background.sizeDelta.x))
+            if (Input.mousePosition.x > (Screen.width - (descriptor.sizeDelta.x)))
             {
-                background.pivot = Vector2.one;
+                descriptor.pivot = Vector2.one;
             }
             else
             {
-                background.pivot = Vector2.up;
+                descriptor.pivot = Vector2.up;
             }
         }
     }
