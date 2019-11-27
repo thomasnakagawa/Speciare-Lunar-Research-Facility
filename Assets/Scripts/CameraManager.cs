@@ -7,20 +7,27 @@ public class CameraManager : MonoBehaviour
 {
     [SerializeField] private float UpdateInterval = 1f;
     private GameObject Player;
-    private GameObject[] Cameras;
-
-    private Camera currentCamera;
+    private CameraController[] CameraPositions;
+    private MovingCamera CameraToMove;
 
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Cameras = GameObject.FindGameObjectsWithTag("Camera");
+        CameraPositions = FindObjectsOfType<CameraController>();
+        CameraToMove = FindObjectOfType<MovingCamera>();
 
+        foreach (Camera cam in FindObjectsOfType<Camera>())
+        {
+            if (cam != CameraToMove.GetComponent<Camera>())
+            {
+                Destroy(cam);
+            }
+        }
         StartCoroutine(UpdateCameraAtInterval());
     }
 
-    public Camera currentCam => currentCamera;
+    public Camera currentCam => CameraToMove.GetComponent<Camera>();
 
     private IEnumerator UpdateCameraAtInterval()
     {
@@ -33,11 +40,11 @@ public class CameraManager : MonoBehaviour
 
     private void UpdateActiveCamera()
     {
-        GameObject closestCamObj;
+        CameraController closestCamObj;
         try
         {
             // find the closest camera that can see the player
-            closestCamObj = Cameras.Where(cam =>
+            closestCamObj = CameraPositions.Where(cam =>
             {
                 if (Physics.Raycast(cam.transform.position, Player.transform.position - cam.transform.position, out var hit))
                 {
@@ -56,14 +63,7 @@ public class CameraManager : MonoBehaviour
 
         if (closestCamObj != null)
         {
-            Camera closestCam = closestCamObj.GetComponent<Camera>();
-
-            if (currentCamera != null)
-            {
-                currentCamera.enabled = false;
-            }
-            closestCam.enabled = true;
-            currentCamera = closestCam;
+            CameraToMove.TargetController = closestCamObj;
         }
     }
 }
