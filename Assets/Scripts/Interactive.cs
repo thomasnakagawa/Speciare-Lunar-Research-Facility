@@ -4,85 +4,83 @@ using OatsUtil;
 using UnityEngine;
 using UnityEngine.Events;
 
-//namespace Adventure
+
+/// <summary>
+/// player can interact with these
+/// </summary>
+public class Interactive : MonoBehaviour
 {
-    /// <summary>
-    /// player can interact with these
-    /// </summary>
-    public class Interactive : MonoBehaviour
+    [SerializeField] private UnityEvent OnInteract = default;
+    public string ObjectName = "InteractiveObject";
+    public string TakeName = "ItemName";
+    public string Verb = "use";
+
+    [SerializeField] private DialogLine[] InspectLines = default;
+
+    [Header("Item use")]
+    [SerializeField] private UnityEvent OnCorrectUse = default;
+    [SerializeField] private string CorrectItemName = default;
+    [SerializeField] private DialogLine[] CorrectUseLines = default;
+
+    [SerializeField] private DialogLine[] DoneUsingLines = default;
+    private bool isDoneUsing = false;
+
+    public Transform InteractPoint => InteractPosition == null ? transform : InteractPosition;
+
+    private Transform InteractPosition;
+
+    private void Start()
     {
-        [SerializeField] private UnityEvent OnInteract = default;
-        public string ObjectName = "InteractiveObject";
-        public string TakeName = "ItemName";
-        public string Verb = "use";
+        InteractPosition = transform.Find("InteractPoint");
+    }
 
-        [SerializeField] private DialogLine[] InspectLines = default;
-
-        [Header("Item use")]
-        [SerializeField] private UnityEvent OnCorrectUse = default;
-        [SerializeField] private string CorrectItemName = default;
-        [SerializeField] private DialogLine[] CorrectUseLines = default;
-
-        [SerializeField] private DialogLine[] DoneUsingLines = default;
-        private bool isDoneUsing = false;
-
-        public Transform InteractPoint => InteractPosition == null ? transform : InteractPosition;
-
-        private Transform InteractPosition;
-
-        private void Start()
+    public virtual void Interact()
+    {
+        FindObjectOfType<DialogBox>().OnDialogEnded = () =>
         {
-            InteractPosition = transform.Find("InteractPoint");
-        }
-
-        public virtual void Interact()
+            OnInteract.Invoke();
+        };
+        if (InspectLines != null && InspectLines.Length > 0)
         {
-            FindObjectOfType<DialogBox>().OnDialogEnded = () =>
+            if (isDoneUsing)
             {
-                OnInteract.Invoke();
-            };
-            if (InspectLines != null && InspectLines.Length > 0)
-            {
-                if (isDoneUsing)
-                {
-                    FindObjectOfType<DialogBox>().ShowDialog(DoneUsingLines);
-                }
-                else
-                {
-                    FindObjectOfType<DialogBox>().ShowDialog(InspectLines);
-                }
-            }
-        }
-
-        public virtual bool UseItemOn(string item)
-        {
-            Debug.Log("Used " + item + " on " + ObjectName);
-            if (item.ToLower().Equals(CorrectItemName.ToLower()) && !isDoneUsing)
-            {
-                OnCorrectUse.Invoke();
-                FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
-                return true;
+                FindObjectOfType<DialogBox>().ShowDialog(DoneUsingLines);
             }
             else
             {
-                return false;
+                FindObjectOfType<DialogBox>().ShowDialog(InspectLines);
             }
         }
+    }
 
-        public void AddToInventory(bool take)
+    public virtual bool UseItemOn(string item)
+    {
+        Debug.Log("Used " + item + " on " + ObjectName);
+        if (item.ToLower().Equals(CorrectItemName.ToLower()) && !isDoneUsing)
         {
-            var item = new InventoryItem();
-            item.ItemName = (TakeName != null && TakeName.Length > 0) ? TakeName : this.ObjectName;
-            SceneUtils.FindComponentInScene<Inventory>().AddToInventory(item);
-            if (take)
-            {
-                Destroy(gameObject);
-            }
+            OnCorrectUse.Invoke();
+            FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
+            return true;
         }
+        else
+        {
+            return false;
+        }
+    }
 
-        public void DoneUsing()
+    public void AddToInventory(bool take)
+    {
+        var item = new InventoryItem();
+        item.ItemName = (TakeName != null && TakeName.Length > 0) ? TakeName : this.ObjectName;
+        SceneUtils.FindComponentInScene<Inventory>().AddToInventory(item);
+        if (take)
         {
-            isDoneUsing = true;
+            Destroy(gameObject);
         }
+    }
+
+    public void DoneUsing()
+    {
+        isDoneUsing = true;
     }
 }
