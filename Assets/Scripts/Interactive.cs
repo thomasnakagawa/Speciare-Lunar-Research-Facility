@@ -25,6 +25,10 @@ public class Interactive : MonoBehaviour
     [SerializeField] private DialogLine[] DoneUsingLines = default;
     private bool isDoneUsing = false;
 
+    [Header("Special case")]
+    [SerializeField] private bool RequiresEndgameForUse = false;
+    [SerializeField] private DialogLine[] BeforeEndgameUseLines = default;
+
     public Transform InteractPoint => InteractPosition == null ? transform : InteractPosition;
 
     private Transform InteractPosition;
@@ -58,9 +62,17 @@ public class Interactive : MonoBehaviour
         Debug.Log("Used " + item + " on " + ObjectName);
         if (item.ToLower().Equals(CorrectItemName.ToLower()) && !isDoneUsing)
         {
-            OnCorrectUse.Invoke();
-            FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
-            return true;
+            if (RequiresEndgameForUse && SceneUtils.FindComponentInScene<AdventureState>().EarthHasBeenContacted == false)
+            {
+                FindObjectOfType<DialogBox>().ShowDialog(BeforeEndgameUseLines);
+                return true;
+            }
+            else
+            {
+                OnCorrectUse.Invoke();
+                FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
+                return true;
+            }
         }
         else
         {

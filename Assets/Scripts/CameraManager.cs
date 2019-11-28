@@ -10,9 +10,12 @@ public class CameraManager : MonoBehaviour
     private CameraController[] CameraPositions;
     private MovingCamera CameraToMove;
 
+    int mask;
+
     // Start is called before the first frame update
     void Start()
     {
+        mask = ~(1 << 9);
         Player = GameObject.FindGameObjectWithTag("Player");
         CameraPositions = FindObjectsOfType<CameraController>();
         CameraToMove = FindObjectOfType<MovingCamera>();

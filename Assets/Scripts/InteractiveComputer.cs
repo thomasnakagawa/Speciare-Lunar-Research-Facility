@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using OatsUtil;
+using UnityEngine.Events;
 
 public class InteractiveComputer : Interactive
 {
+    [SerializeField] private UnityEvent OnEnd;
     public override void Interact()
     {
         base.Interact();
         var adventureState = SceneUtils.FindComponentInScene<AdventureState>();
-        if (adventureState.SatelliteWorks)
+        if (adventureState.SatelliteWorks == false)
         {
             FindObjectOfType<DialogBox>().ShowDialog(new DialogLine[] {
                 new DialogLine("Computer", "Connecting..."),
@@ -27,8 +29,8 @@ public class InteractiveComputer : Interactive
                     new DialogLine("{player}", "Hello!? Can anyone hear me?"),
                     new DialogLine("Earthling", "Is this {player}?! Are you okay?"),
                     new DialogLine("{player}", "Hey! I crashed the ship, but I'm alright. Send someone to come get me!"),
-                    new DialogLine("Earthling", "Are you in the moon lab? Have you found the cures to all the diseases?"),
-                    new DialogLine("{player}", "Yes, I'm in the lab. There's barely anything in here, the researchers must have taken everything with them when they left"),
+                    new DialogLine("Earthling", "Are you in the moon lab? Have you found the cures to the diseases?"),
+                    new DialogLine("{player}", "I'm in the lab, but there's barely anything in here. The researchers must have taken everything with them when they left"),
                     new DialogLine("Earthling", "No, the cures must be there. They're not here on earth. Aren't they written down in a book up there?"),
                     new DialogLine("{player}", "The bookshelves are empty"),
                     new DialogLine("Earthling", "I swear there must be a \"Book of Cures\" there somewhere. We didn't send you to the moon for nothing"),
@@ -54,7 +56,16 @@ public class InteractiveComputer : Interactive
             if (item.ToLower().Contains("book of cures"))
             {
                 // end of game dialog
-                //FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
+                FindObjectOfType<DialogBox>().ShowDialog(new DialogLine[] {
+                    new DialogLine("{player}", "Hey"),
+                    new DialogLine("{player}", "I found the Book of Cures"),
+                    new DialogLine("Earthling", "Really? Are you sure? Hold it up to the camera"),
+                    new DialogLine("{player}", "Here it is. It says \"Book of Cures\" right on the cover"),
+                    new DialogLine("Earthling", "Alright! Let's get you home. We need those as soon as possible"),
+                    new DialogLine("Earthling", "I'm sending a ship right now"),
+                    new DialogLine("{player}", "Fantastic")
+                });
+                FindObjectOfType<DialogBox>().OnDialogEnded = OnEnd.Invoke;
             }
             else
             {
@@ -66,10 +77,7 @@ public class InteractiveComputer : Interactive
         }
         else
         {
-
-            FindObjectOfType<DialogBox>().ShowDialog(new DialogLine[] {
-                    new DialogLine("{player}", "")
-            });
+            return false;
         }
 
         return true;

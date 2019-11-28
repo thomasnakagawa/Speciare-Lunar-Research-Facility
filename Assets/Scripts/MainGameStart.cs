@@ -13,7 +13,7 @@ public class MainGameStart : MonoBehaviour
 
     private IEnumerator StartGameSequence()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         SceneUtils.FindComponentInScene<DialogBox>().ShowDialog(new DialogLine[]
         {

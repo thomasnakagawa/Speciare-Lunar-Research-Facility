@@ -5,7 +5,7 @@ using OatsUtil;
 
 public class MouseInteractionHandler : MonoBehaviour
 {
-    private LayerMask IgnorePlayerLayerMask;
+    private int mask;
     private EventSystem eventSystem;
 
     private PointAndClickMovement Player;
@@ -20,7 +20,7 @@ public class MouseInteractionHandler : MonoBehaviour
     void Start()
     {
         eventSystem = EventSystem.current;
-        IgnorePlayerLayerMask = LayerMask.GetMask("Player");
+        mask = ~((1 << 8) | (1 << 9));
 
         Player = SceneUtils.FindComponentInScene<PointAndClickMovement>();
         dialogBox = SceneUtils.FindComponentInScene<DialogBox>();
@@ -34,7 +34,7 @@ public class MouseInteractionHandler : MonoBehaviour
         // calculate values
         Interactive hoveredInteractive = null;
         Vector3 raycastPosition = Vector3.zero;
-        if (Physics.Raycast(cameraManager.currentCam.ScreenPointToRay(Input.mousePosition), out var hit, IgnorePlayerLayerMask))
+        if (Physics.Raycast(cameraManager.currentCam.ScreenPointToRay(Input.mousePosition), out var hit, 9000f, mask))
         {
             hoveredInteractive= hit.collider.GetComponent<Interactive>();
             raycastPosition = hit.point;

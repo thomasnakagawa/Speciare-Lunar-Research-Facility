@@ -21,8 +21,6 @@ public class PointAndClickMovement : MonoBehaviour
 
     private DialogBox dialogBox;
 
-    private int IgnorePlayerLayerMask;
-
     private EventSystem eventSystem;
 
     // Start is called before the first frame update
@@ -34,7 +32,6 @@ public class PointAndClickMovement : MonoBehaviour
         animator.SetInteger("AnimationPar", 0);
 
         dialogBox = SceneUtils.FindComponentInScene<DialogBox>();
-        IgnorePlayerLayerMask = LayerMask.GetMask("Player");
 
         eventSystem = EventSystem.current;
     }
