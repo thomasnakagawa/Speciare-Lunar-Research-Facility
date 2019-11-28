@@ -26,7 +26,6 @@ public class DialogBox : MonoBehaviour
 
     void Start()
     {
-        PlayerName = PlayerPrefs.GetString("PlayerName", "Player");
         LinesToShow = new Queue<DialogLine>();
 
         InputField = this.RequireDescendantGameObject("NameInputField").RequireComponent<TMPro.TMP_InputField>();
@@ -84,6 +83,7 @@ public class DialogBox : MonoBehaviour
         else
         {
             DialogLine nextLine = LinesToShow.Dequeue();
+            PlayerName = PlayerPrefs.GetString("PlayerName", "Player");
 
             // show the line
             string speaker = "";
@@ -101,7 +101,8 @@ public class DialogBox : MonoBehaviour
             }
 
             DialogBoxText.text = speaker;
-            StartCoroutine(TypeWrite(nextLine.Content));
+            string processedContent = nextLine.Content.Replace("{player}", PlayerName);
+            StartCoroutine(TypeWrite(processedContent));
 
             if (nextLine.Sound != null)
             {

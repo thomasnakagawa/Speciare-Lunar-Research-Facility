@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using OatsUtil;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class Interactive : MonoBehaviour
 {
     [SerializeField] private UnityEvent OnInteract = default;
     public string ObjectName = "InteractiveObject";
+    public string TakeName = "ItemName";
     public string Verb = "use";
 
     [SerializeField] private DialogLine[] InspectLines = default;
@@ -18,6 +20,9 @@ public class Interactive : MonoBehaviour
     [SerializeField] private UnityEvent OnCorrectUse = default;
     [SerializeField] private string CorrectItemName = default;
     [SerializeField] private DialogLine[] CorrectUseLines = default;
+
+    [SerializeField] private DialogLine[] DoneUsingLines = default;
+    private bool isDoneUsing = false;
 
     public Transform InteractPoint => InteractPosition == null ? transform : InteractPosition;
 
@@ -33,14 +38,21 @@ public class Interactive : MonoBehaviour
         OnInteract.Invoke();
         if (InspectLines != null && InspectLines.Length > 0)
         {
-            FindObjectOfType<DialogBox>().ShowDialog(InspectLines);
+            if (isDoneUsing)
+            {
+                FindObjectOfType<DialogBox>().ShowDialog(DoneUsingLines);
+            }
+            else
+            {
+                FindObjectOfType<DialogBox>().ShowDialog(InspectLines);
+            }
         }
     }
 
     public virtual bool UseItemOn(string item)
     {
         Debug.Log("Used " + item + " on " + ObjectName);
-        if (item.ToLower().Equals(CorrectItemName.ToLower()))
+        if (item.ToLower().Equals(CorrectItemName.ToLower()) && !isDoneUsing)
         {
             OnCorrectUse.Invoke();
             FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
@@ -50,5 +62,21 @@ public class Interactive : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void AddToInventory(bool take)
+    {
+        var item = new InventoryItem();
+        item.ItemName = (TakeName != null && TakeName.Length > 0) ? TakeName : this.ObjectName;
+        SceneUtils.FindComponentInScene<Inventory>().AddToInventory(item);
+        if (take)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void DoneUsing()
+    {
+        isDoneUsing = true;
     }
 }

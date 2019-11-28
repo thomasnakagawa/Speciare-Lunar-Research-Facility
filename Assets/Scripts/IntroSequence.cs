@@ -41,7 +41,7 @@ public class IntroSequence : MonoBehaviour
             new DialogLine("", "Our budget's tight this year, so we can only send one person to the moon for this mission"),
             new DialogLine("", "Who should we send?", DialogLine.SpecialLines.NAME_BOX),
             new DialogLine("", "Good choice"),
-            new DialogLine("", "We'll send that person right away"),
+            new DialogLine("", "We'll send {player} to the moon right away"),
             new DialogLine("", "I hope this goes well")
         });
 
