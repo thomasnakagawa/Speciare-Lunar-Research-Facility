@@ -2566,6 +2566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 758651230}
   - component: {fileID: 758651229}
+  - component: {fileID: 758651231}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -2684,6 +2685,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &758651231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758651228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f2c51f6535f4f529fce12bf6afb02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextmusic: {fileID: 8300000, guid: 9f17ec05146494ee5afa31721dcc3e40, type: 3}
 --- !u!43 &832698810
 Mesh:
   m_ObjectHideFlags: 0
@@ -6681,7 +6695,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7665026
+  m_Name: pb_Mesh-52164
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7811,6 +7825,11 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 4057689152308611589, guid: 08907ee520dde2245a276bc377391f15,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08907ee520dde2245a276bc377391f15, type: 3}
 --- !u!1001 &5111328563251940053
@@ -8189,6 +8208,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150833189492895816, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7007
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150833189492895816, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7007
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150833189492895816, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7007
       objectReference: {fileID: 0}
     - target: {fileID: 5111328562365533848, guid: f33e683dff33936429901656799d18c2,
         type: 3}

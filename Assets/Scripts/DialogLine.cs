@@ -12,7 +12,8 @@ public class DialogLine
     public enum SpecialLines
     {
         NONE,
-        NAME_BOX
+        NAME_BOX,
+        SWITCH_MUSIC
     }
 
     public DialogLine(string Speaker, string Content, SpecialLines specialLine = SpecialLines.NONE)

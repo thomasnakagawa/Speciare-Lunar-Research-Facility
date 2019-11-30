@@ -127,6 +127,11 @@ public class DialogBox : MonoBehaviour
                     NextButton.interactable = validateName(inputText);
                 });
             }
+            if (nextLine.SpecialLine == DialogLine.SpecialLines.SWITCH_MUSIC)
+            {
+                InputField.gameObject.SetActive(false);
+                SceneUtils.FindComponentInScene<MusicSwitcher>().SwitchMusic();
+            }
         }
     }
 

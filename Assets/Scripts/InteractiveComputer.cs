@@ -25,8 +25,13 @@ public class InteractiveComputer : Interactive
                 adventureState.EarthHasBeenContacted = true;
                 FindObjectOfType<DialogBox>().ShowDialog(new DialogLine[] {
                     new DialogLine("Computer", "Connecting..."),
-                    new DialogLine("Computer", "Connected. Video call established"),
+                    new DialogLine("Computer", "Connected. Video call established", DialogLine.SpecialLines.SWITCH_MUSIC),
                     new DialogLine("{player}", "Hello!? Can anyone hear me?"),
+                    new DialogLine("Computer", "..."),
+                    new DialogLine("{player}", "Is anyone there? It's me, {player}!"),
+                    new DialogLine("{player}", "I'm stranded on the moon! I need help! Is anyone there?!"),
+                    new DialogLine("Computer", "..."),
+                    new DialogLine("Computer", "...."),
                     new DialogLine("Earthling", "Is this {player}?! Are you okay?"),
                     new DialogLine("{player}", "Hey! I crashed the ship, but I'm alright. Send someone to come get me!"),
                     new DialogLine("Earthling", "Are you in the moon lab? Have you found the cures to the diseases?"),
