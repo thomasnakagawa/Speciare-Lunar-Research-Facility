@@ -29,6 +29,10 @@ public class Interactive : MonoBehaviour
     [SerializeField] private bool RequiresEndgameForUse = false;
     [SerializeField] private DialogLine[] BeforeEndgameUseLines = default;
 
+    [Header("Specail name")]
+    [SerializeField] private string SpecialName = null;
+    [SerializeField] private DialogLine[] CorrectUseSpecialLines = default;
+
     public Transform InteractPoint => InteractPosition == null ? transform : InteractPosition;
 
     private Transform InteractPosition;
@@ -69,8 +73,15 @@ public class Interactive : MonoBehaviour
             }
             else
             {
+                if (SpecialName != null && PlayerPrefs.GetString("PlayerName").ToLower().Equals(SpecialName.ToLower()))
+                {
+                    FindObjectOfType<DialogBox>().ShowDialog(CorrectUseSpecialLines);
+                }
+                else
+                {
+                    FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
+                }
                 OnCorrectUse.Invoke();
-                FindObjectOfType<DialogBox>().ShowDialog(CorrectUseLines);
                 return true;
             }
         }
