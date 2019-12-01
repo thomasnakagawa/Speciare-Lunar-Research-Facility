@@ -13,7 +13,8 @@ public class OpenURL : MonoBehaviour
     {
         this.RequireComponent<Button>().onClick.AddListener(() =>
         {
-            Application.OpenURL(URL);
+            //Application.OpenURL(URL);
+            Application.ExternalEval("window.open(" + URL + ");");
         });
     }
 }
