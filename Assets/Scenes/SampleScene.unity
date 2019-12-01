@@ -471,7 +471,7 @@ MonoBehaviour:
     SpecialLine: 0
   - Content: I'll take one
     Speaker: 
-    Sound: {fileID: 0}
+    Sound: {fileID: 8300000, guid: eada3a5121965481ea8dc74c00dd5ecf, type: 3}
     SpecialLine: 0
   OnCorrectUse:
     m_PersistentCalls:
@@ -1734,7 +1734,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7665262
+  m_Name: pb_Mesh-182338
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3760,7 +3760,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7662142
+  m_Name: pb_Mesh-181868
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8484,6 +8484,11 @@ PrefabInstance:
       propertyPath: InspectLines.Array.data[0].Content
       value: It's a box full of a bunch of stuff
       objectReference: {fileID: 0}
+    - target: {fileID: 8338986061371803233, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: InspectLines.Array.data[1].Sound
+      value: 
+      objectReference: {fileID: 8300000, guid: eada3a5121965481ea8dc74c00dd5ecf, type: 3}
     - target: {fileID: 2478989399531640457, guid: f33e683dff33936429901656799d18c2,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9859,6 +9864,11 @@ PrefabInstance:
       propertyPath: CorrectUseLines.Array.data[4].Speaker
       value: '{player}'
       objectReference: {fileID: 0}
+    - target: {fileID: 6146658715940972137, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.data[2].Sound
+      value: 
+      objectReference: {fileID: 8300000, guid: a0d08af586e5c4309ae526d69b746e93, type: 3}
     - target: {fileID: 7818335528389008373, guid: f33e683dff33936429901656799d18c2,
         type: 3}
       propertyPath: OnCorrectUse.m_PersistentCalls.m_Calls.Array.size
@@ -10049,6 +10059,11 @@ PrefabInstance:
       propertyPath: BeforeEndgameUseLines.Array.data[0].Content
       value: I don't see the point in writing on these books
       objectReference: {fileID: 0}
+    - target: {fileID: 5346844021854518182, guid: f33e683dff33936429901656799d18c2,
+        type: 3}
+      propertyPath: CorrectUseLines.Array.data[3].Sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 17855812d40944f1ead624a51561cd5e, type: 3}
     - target: {fileID: 5111328563746580159, guid: f33e683dff33936429901656799d18c2,
         type: 3}
       propertyPath: InspectLines.Array.size
