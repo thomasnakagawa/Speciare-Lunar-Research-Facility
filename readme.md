@@ -1,6 +1,6 @@
 [Play it in-browser on Itch.io](https://float-oat.itch.io/speciare-lunar-research-facility)
 
-# Speciare Lunar Research facility
+# Speciare Lunar Research Facility
 
 ![Screenshot](Screenshots/Screencap_960x600_2019-11-30_20-00-31.png)
 ![Screenshot](Screenshots/Screencap_960x600_2019-11-30_19-59-21.png)
